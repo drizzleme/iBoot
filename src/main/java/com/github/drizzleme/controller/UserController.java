@@ -2,6 +2,7 @@ package com.github.drizzleme.controller;
 
 import com.github.drizzleme.bo.User;
 import com.github.drizzleme.mapper.UserMapper;
+import com.github.drizzleme.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -19,11 +20,11 @@ import java.util.List;
 @RequestMapping("/user")
 public class UserController {
     @Autowired
-    UserMapper userMapper;
+    UserService userService;
 
     @RequestMapping("/selectAll")
     @ResponseBody
     public List<User> selectAll(){
-        return userMapper.selectAll();
+        return userService.selectAll();
     }
 }

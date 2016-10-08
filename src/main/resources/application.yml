@@ -1,3 +1,5 @@
+server:
+    port: 80
 spring:
     datasource:
         name: test
@@ -21,5 +23,4 @@ spring:
         poolPreparedStatements: true
         maxOpenPreparedStatements: 20
     mybatis:
-      mapperLocations: classpath:com.github.drizzleme.mapper/*.xml
-      typeAliasesPackage: tk.mapper.model
+      mapperLocations: classpath:com/github/drizzleme/mapper/*.xml
