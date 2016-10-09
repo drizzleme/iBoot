@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.github.drizzleme.mapper.UserRolePermissionMapper" >
+  <resultMap id="BaseResultMap" type="com.github.drizzleme.bo.UserRolePermission" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="role_id" property="roleId" jdbcType="INTEGER" />
+    <result column="permission_bit_operator" property="permissionBitOperator" jdbcType="VARCHAR" />
+    <result column="parent_uid" property="parentUid" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, user_id, role_id, permission_bit_operator, parent_uid
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from user_role_permission
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from user_role_permission
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.github.drizzleme.bo.UserRolePermission" >
+    insert into user_role_permission (id, user_id, role_id, 
+      permission_bit_operator, parent_uid)
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{roleId,jdbcType=INTEGER}, 
+      #{permissionBitOperator,jdbcType=VARCHAR}, #{parentUid,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.github.drizzleme.bo.UserRolePermission" >
+    insert into user_role_permission
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="roleId != null" >
+        role_id,
+      </if>
+      <if test="permissionBitOperator != null" >
+        permission_bit_operator,
+      </if>
+      <if test="parentUid != null" >
+        parent_uid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="roleId != null" >
+        #{roleId,jdbcType=INTEGER},
+      </if>
+      <if test="permissionBitOperator != null" >
+        #{permissionBitOperator,jdbcType=VARCHAR},
+      </if>
+      <if test="parentUid != null" >
+        #{parentUid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.github.drizzleme.bo.UserRolePermission" >
+    update user_role_permission
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="roleId != null" >
+        role_id = #{roleId,jdbcType=INTEGER},
+      </if>
+      <if test="permissionBitOperator != null" >
+        permission_bit_operator = #{permissionBitOperator,jdbcType=VARCHAR},
+      </if>
+      <if test="parentUid != null" >
+        parent_uid = #{parentUid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.github.drizzleme.bo.UserRolePermission" >
+    update user_role_permission
+    set user_id = #{userId,jdbcType=INTEGER},
+      role_id = #{roleId,jdbcType=INTEGER},
+      permission_bit_operator = #{permissionBitOperator,jdbcType=VARCHAR},
+      parent_uid = #{parentUid,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

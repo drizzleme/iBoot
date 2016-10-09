@@ -1,38 +1,35 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>index</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-
-    <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
-    <link th:href="@{/bootstrap/css/bootstrap-theme.min.css}" rel="stylesheet" />
-</head>
+<html>
+<head><title>ViralPatel.net - FreeMarker Spring MVC Hello World</title>
 <body>
-<div class="panel panel-primary">
-    <div class="panel-heading">hello</div>
-    <div class="panel-body" th:text="${xname}"></div>
+<div id="header">
+    <H2>
+        <a href="http://viralpatel.net"><img height="37" width="236" border="0px" src="http://viralpatel.net/blogs/wp-content/themes/vp/images/logo.png" align="left"/></a>
+        FreeMarker Spring MVC Hello World
+    </H2>
 </div>
-<div class="panel panel-warning">
-    <div class="panel-heading">hello</div>
-    <div id="usernamediv" class="panel-body"></div>
+
+<div id="content">
+
+    <fieldset>
+        <legend>Add User</legend>
+        <form name="user" action="add.html" method="post">
+            Firstname: <input type="text" name="name" /> <br/>
+            Lastname: <input type="text" name="email" />   <br/>
+            <input type="submit" value="   Save   " />
+        </form>
+    </fieldset>
+    <br/>
+    <table class="datatable">
+        <tr>
+            <th>name</th>  <th>Lastname</th>
+        </tr>
+        <#list model["userList"] as user>
+            <tr>
+                <td>${user.name}</td> <td>${user.email}</td>
+            </tr>
+        </#list>
+    </table>
+
 </div>
-<script type="text/javascript" th:src="@{/js/jquery-1.11.1.js}"></script>
-<script type="text/javascript" th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
-<script th:inline="javascript">
-    $(function(){
-        $.ajax({
-            url:"/thymeleaf/ajax",
-            data:{
-                username:"xxx"
-            },
-            type:"get",
-            dataType:"text",
-            success:function(text){
-                alert(text);
-                $("#usernamediv").text(text);
-            }
-        });
-    });
-</script>
 </body>
 </html>

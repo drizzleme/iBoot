@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
  *         DATE : 2016/10/9
  */
 @Api("测试Thymeleaf和devtools")
-@Controller
-@RequestMapping("/thymeleaf")
+//@Controller
+//@RequestMapping("/thymeleaf")
 public class ThymeleafController {
     @ApiOperation("第一个thymeleaf程序")
     @RequestMapping(value = "/greeting", method = RequestMethod.GET)

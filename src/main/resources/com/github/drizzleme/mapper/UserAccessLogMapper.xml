@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.github.drizzleme.mapper.UserAccessLogMapper" >
+  <resultMap id="BaseResultMap" type="com.github.drizzleme.bo.UserAccessLog" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="record_type" property="recordType" jdbcType="INTEGER" />
+    <result column="record_address" property="recordAddress" jdbcType="VARCHAR" />
+    <result column="device_model" property="deviceModel" jdbcType="VARCHAR" />
+    <result column="device_version" property="deviceVersion" jdbcType="VARCHAR" />
+    <result column="record_time" property="recordTime" jdbcType="TIMESTAMP" />
+    <result column="system_version" property="systemVersion" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, user_id, record_type, record_address, device_model, device_version, record_time, 
+    system_version
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from user_access_log
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from user_access_log
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.github.drizzleme.bo.UserAccessLog" >
+    insert into user_access_log (id, user_id, record_type, 
+      record_address, device_model, device_version, 
+      record_time, system_version)
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{recordType,jdbcType=INTEGER}, 
+      #{recordAddress,jdbcType=VARCHAR}, #{deviceModel,jdbcType=VARCHAR}, #{deviceVersion,jdbcType=VARCHAR}, 
+      #{recordTime,jdbcType=TIMESTAMP}, #{systemVersion,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.github.drizzleme.bo.UserAccessLog" >
+    insert into user_access_log
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="recordType != null" >
+        record_type,
+      </if>
+      <if test="recordAddress != null" >
+        record_address,
+      </if>
+      <if test="deviceModel != null" >
+        device_model,
+      </if>
+      <if test="deviceVersion != null" >
+        device_version,
+      </if>
+      <if test="recordTime != null" >
+        record_time,
+      </if>
+      <if test="systemVersion != null" >
+        system_version,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="recordType != null" >
+        #{recordType,jdbcType=INTEGER},
+      </if>
+      <if test="recordAddress != null" >
+        #{recordAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceModel != null" >
+        #{deviceModel,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceVersion != null" >
+        #{deviceVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="recordTime != null" >
+        #{recordTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="systemVersion != null" >
+        #{systemVersion,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.github.drizzleme.bo.UserAccessLog" >
+    update user_access_log
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="recordType != null" >
+        record_type = #{recordType,jdbcType=INTEGER},
+      </if>
+      <if test="recordAddress != null" >
+        record_address = #{recordAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceModel != null" >
+        device_model = #{deviceModel,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceVersion != null" >
+        device_version = #{deviceVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="recordTime != null" >
+        record_time = #{recordTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="systemVersion != null" >
+        system_version = #{systemVersion,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.github.drizzleme.bo.UserAccessLog" >
+    update user_access_log
+    set user_id = #{userId,jdbcType=INTEGER},
+      record_type = #{recordType,jdbcType=INTEGER},
+      record_address = #{recordAddress,jdbcType=VARCHAR},
+      device_model = #{deviceModel,jdbcType=VARCHAR},
+      device_version = #{deviceVersion,jdbcType=VARCHAR},
+      record_time = #{recordTime,jdbcType=TIMESTAMP},
+      system_version = #{systemVersion,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

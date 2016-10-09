@@ -41,7 +41,7 @@ public class MybatisConfiguration implements EnvironmentAware{
 
     @Override
     public void setEnvironment(Environment environment) {
-        this.propertyResolver = new RelaxedPropertyResolver(environment,"spring.mybatis.");
+        this.propertyResolver = new RelaxedPropertyResolver(environment,"mybatis.");
     }
 
 

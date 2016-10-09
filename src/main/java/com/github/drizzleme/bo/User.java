@@ -72,4 +72,12 @@ public class User {
     public void setIcon(String icon) {
         this.icon = icon == null ? null : icon.trim();
     }
+
+    public User() {
+    }
+
+    public User(String name, String email) {
+        this.name = name;
+        this.email = email;
+    }
 }
